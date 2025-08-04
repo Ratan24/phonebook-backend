@@ -29,7 +29,7 @@ app.get('/api/persons', (request, response) => {
 
 // app.get('/info', (request, response) => {
 //     const currentTime = new Date().toString()
-    
+
 //     response.write(`Phonebook has info for ${persons.length} people\n\n`)
 //     response.write(currentTime)
 //     response.end()
@@ -75,11 +75,11 @@ app.get('/api/persons/:id', (request, response, next) => {
 // app.delete('/api/persons/:id', (request, response) => {
 //     const id = request.params.id
 //     persons = persons.filter(person => person.id!==id)
-//     response.status(204).end()  
+//     response.status(204).end()
 // })
 app.delete('/api/persons/:id', (request, response, next) => {
   Person.findByIdAndDelete(request.params.id)
-    .then(result => {
+    .then(() => {
       response.status(204).end()
     })
     .catch(error => next(error))
@@ -106,26 +106,26 @@ app.put('/api/persons/:id', (request, response, next) => {
 //     const id = String(Math.floor(Math.random() * 1000000))
 
 //     if (persons.some(person => person.name === data.name)) {
-//         return response.status(400).json({ 
-//           error: 'name must be unique' 
+//         return response.status(400).json({
+//           error: 'name must be unique'
 //         })
 //       }
 
 //     if (!data.name) {
-//         return response.status(400).json({ 
-//           error: 'name missing' 
+//         return response.status(400).json({
+//           error: 'name missing'
 //         })
 //       }
 
 //       if (!data.number) {
-//         return response.status(400).json({ 
-//           error: 'number missing' 
+//         return response.status(400).json({
+//           error: 'number missing'
 //         })
 //       }
 
-//     const person =     { 
+//     const person =     {
 //         "id": id,
-//         "name": data.name, 
+//         "name": data.name,
 //         "number": data.number
 //       }
 
